@@ -3,8 +3,8 @@
 from typing import Union, Any, List, Tuple
 
 
-def safe_first_element(lst: Union[List[Any], Tuple[Any, ...]]
-                      ) -> Union[Any, None]:
+def safe_first_element(lst: Union[List[Any],
+                       Tuple[Any, ...]]) -> Union[Any, None]:
     """Types of the elements of the input are not known"""
     if lst:
         return lst[0]
