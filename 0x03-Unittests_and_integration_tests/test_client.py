@@ -22,7 +22,7 @@ class TestGithubOrgClient(unittest.TestCase):
         ("google", {'login': "google"}),
         ("abc", {'login': "abc"}),
     ])
-    @patch("client.get_json",)
+    @patch("client.get_json")
     def test_org(self, org: str, response: Dict,
                  mocked_fxn: MagicMock) -> None:
         """Tests the `org` method."""
