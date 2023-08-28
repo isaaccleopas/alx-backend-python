@@ -58,15 +58,18 @@ class TestMemoize(unittest.TestCase):
         Test that utils.memoize decorator works as intended
         """
         class TestClass:
+            """inner class"""
 
             def a_method(self):
+                """a_method"""
                 return 42
 
             @memoize
             def a_property(self):
+                """property method"""
                 return self.a_method()
         with patch.object(TestClass, 'a_method') as mock_object:
-            test = TestClass()
-            test.a_property()
-            test.a_property()
+            instance = TestClass()
+            instance.a_property()
+            instance.a_property()
             mock_object.assert_called_once()
