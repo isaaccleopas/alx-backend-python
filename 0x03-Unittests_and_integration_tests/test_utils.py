@@ -50,7 +50,9 @@ class TestGetJson(unittest.TestCase):
 
 
 class TestMemoize(unittest.TestCase):
-    """Test the memoization decorator, memoize"""
+    """
+    Test the memoization decorator, memoize
+    """
     def test_memoize(self):
         """
         Test that utils.memoize decorator works as intended
@@ -60,12 +62,11 @@ class TestMemoize(unittest.TestCase):
             def a_method(self):
                 return 42
 
-
             @memoize
             def a_property(self):
                 return self.a_method()
-        with patch.object(TestClass, 'a_method') as mock_a_method:
-            instance = TestClass()
-            instance.a_property()
-            instance.a_property()
-            mock_a_method.assert_called_once()
+        with patch.object(TestClass, 'a_method') as mock_object:
+            test = TestClass()
+            test.a_property()
+            test.a_property()
+            mock_object.assert_called_once()
