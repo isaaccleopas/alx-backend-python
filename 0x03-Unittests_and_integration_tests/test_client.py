@@ -16,6 +16,7 @@ from client import (
 )
 from fixtures import TEST_PAYLOAD
 
+
 class TestGithubOrgClient(unittest.TestCase):
     """Class test for github org client"""
     @parameterized.expand([
@@ -103,7 +104,6 @@ class TestGithubOrgClient(unittest.TestCase):
             mock_public_repos_url.assert_called_once()
         mock_get_json.assert_called_once()
 
-
     @parameterized.expand([
         ({'license': {'key': "bsd-3-clause"}}, "bsd-3-clause", True),
         ({'license': {'key': "bsl-1.0"}}, "bsd-3-clause", False),
@@ -133,7 +133,6 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
             'https://api.github.com/orgs/google/repos': cls.repos_payload,
         }
 
-
         def get_payload(url):
             """get payload method"""
             if url in route_payload:
@@ -143,7 +142,6 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
         cls.get_patcher = patch("requests.get", side_effect=get_payload)
         cls.get_patcher.start()
 
-
     def test_public_repos(self) -> None:
         """Tests the `public_repos` method."""
         self.assertEqual(
@@ -151,14 +149,12 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
             self.expected_repos,
         )
 
-
     def test_public_repos_with_license(self) -> None:
         """Tests the `public_repos` method with a license."""
         self.assertEqual(
             GithubOrgClient("google").public_repos(license="apache-2.0"),
             self.apache2_repos,
         )
-
 
     @classmethod
     def tearDownClass(cls) -> None:

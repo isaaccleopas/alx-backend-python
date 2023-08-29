@@ -7,6 +7,7 @@ from utils import access_nested_map, get_json, memoize
 from typing import Mapping, Sequence, Any
 from parameterized import parameterized
 
+
 class TestAccessNestedMap(unittest.TestCase):
     """Class unittest for accessing Nested Map"""
 
@@ -63,7 +64,6 @@ class TestMemoize(unittest.TestCase):
             def a_method(self):
                 """a_method"""
                 return 42
-
 
             @memoize
             def a_property(self):
